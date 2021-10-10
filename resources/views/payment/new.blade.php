@@ -1,41 +1,22 @@
 @extends('layout')
-
 @section('title','Payment')
 @section('content')
-
-<div>
-    @if(session('status'))
-    {{ session('status') }}
-    @endif
-</div>
-
+<br>
+Username : {{ $profile->name }}<br>
+Email : {{ $profile->email }}<br>
+First Name : {{ $profile->profile->first_name }}<br>
+Last Name : {{ $profile->profile->last_name }}<br>
+Mobile : {{ $profile->profile->mobile }}<br>
+Date of Birth : {{ \Carbon\Carbon::parse($profile->profile->dob)->format('j F, Y') }}<br>
+Role : {{ $profile->role->name }}<br>
 <form action="{{ route('payment.payu') }}" method="POST">
     @csrf
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="{{ old('name') }}">
-    @error('name')
-        {{ $message }}
-    @enderror
-    <br><br>
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" value="{{ old('email') }}">
-    @error('email')
-        {{ $message }}
-    @enderror
-    <br><br>
-    <label for="mobile">Mobile:</label>
-    <input type="text" id="mobile" name="mobile" value="{{ old('mobile') }}">
-    @error('mobile')
-        {{ $message }}
-    @enderror
-    <br><br>
     <label for="amount">Amount:</label>
     <input type="text" id="amount" name="amount" value="{{ old('amount') }}">
     @error('amount')
         {{ $message }}
     @enderror
-    <br><br>    
+    <br>
     <input type="submit" value="Pay">
-</form> 
-  
+</form>
 @endsection

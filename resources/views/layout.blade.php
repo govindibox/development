@@ -13,7 +13,7 @@
         Welcome Guest
     @else
         Welcome {{ Auth::user()->name }} |
-        <a href="javascript:void(0);">Payment</a> |
+        <a href="{{ route('payment.new') }}">Payment</a> |
         <a href="{{ route('role.create') }}">Add Role</a> |
         <a href="{{ route('role.index') }}">List Role</a> |
         <a href="{{ route('profile.index') }}">Profile</a> |

@@ -49,4 +49,8 @@ class User extends Authenticatable
         //return $this->belongsToMany('App\Models\Role','App\Models\UserProfile','user_id','role_id');
         return $this->hasOneThrough('App\Models\Role','App\Models\UserProfile','user_id','id');
     }
+
+    function transaction(){
+        return $this->hasMany('App\Models\UserPayment', 'user_id', 'id');
+    }
 }

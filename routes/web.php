@@ -22,9 +22,9 @@ Route::get('/home', [Dashboard::class,'home'])->name('home');
 Route::resource('/role', RoleController::class)->only(['index','create','store','edit','update','destroy'])->middleware('auth');
 Route::prefix('/payment')->name('payment.')->group(function(){
     Route::get('/new', [PaymentController::class,'new'])->name('new')->middleware('auth');;
-    Route::post('/payu', [PaymentController::class,'payu'])->name('payu')->middleware('auth');;
-    Route::get('/success', [PaymentController::class,'success'])->name('success')->middleware('auth');;
-    Route::get('/failure', [PaymentController::class,'failure'])->name('failure')->middleware('auth');;
+    Route::post('/payu', [PaymentController::class,'payu'])->name('payu')->middleware('auth');
+    Route::post('/success', [PaymentController::class,'success'])->name('success')->middleware('auth');
+    Route::post('/failure', [PaymentController::class,'failure'])->name('failure')->middleware('auth');
 });
 Route::resource('/profile', UserProfile::class)->only(['index','edit','update'])->middleware('auth');
 Auth::Routes();
